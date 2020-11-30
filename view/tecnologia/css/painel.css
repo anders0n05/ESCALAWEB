@@ -1,0 +1,144 @@
+body{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+/* Vermelho */
+.vermelho {
+    border: 1px solid red;
+    background-color: red;
+    color:white;
+}
+
+/* Verde */
+.verde{
+    border: 1px solid green;
+    border-color: green;
+    background-color: green;
+    color:white;
+}
+
+/* Preto */
+.preto{
+    border: 1px solid black;
+    background-color: black;
+    color:white;
+}
+
+/* Azul */
+.azul{
+    border: 1px solid blue;
+    background-color: blue;
+    color:white;
+}
+/* Amarelo */
+.amarelo{
+    border: 1px solid yellow;
+    background-color: yellow;
+    color: black;
+}
+
+/* Laranja */
+.laranja{
+    border: 1px solid orange;
+    background-color: orange;
+    color:white;
+}
+
+/* Salmao */
+.salmao{
+    border: 1px solid salmon;
+    background-color: salmon;
+    color:white;
+}
+
+/* Branco */
+.branco{
+    border: 1px solid rgba(0,0,0,.125);
+    background-color: #fff;
+    color: black;
+}
+
+.col-md-1 {
+    width: 12.5% !important;
+}
+
+/* Paineis */
+.panel{
+    text-align: center;
+    border-radius: 0 !important;
+    margin-bottom: 0;
+}
+
+.panel-heading {
+    border-radius: 0 !important;
+    font-size: 20px !important;
+    font-weight: 500;
+    padding: 10px 0 13px 0;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.panel-body {
+    padding: 10px 15px 15px 15px !important;
+    font-weight: 600;
+    font-size: 35px !important;
+}
+
+.col-md-1 {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+/* Tabela */
+#recursos {
+    font-size: 20px;
+    margin-top: 130px !important;
+    margin-bottom: 130px !important;
+}
+#recursos th:after,#recursos th:before{
+    display: none;    
+}
+#recursos th{
+    padding: 2px 5px 2px 5px;
+}
+
+#recursos td{
+    padding: 2px 5px 2px 5px;
+}
+
+/* Fixadores */
+.fixed-top {
+    margin: 0 !important;
+}
+.fixed-top {
+    position: fixed;
+    top: 0px;
+    right: 0;
+    left: 0;
+    z-index: 999;
+}
+.fixed-bottom {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+}
+.col-sm-12{
+    padding: 0;
+    margin: 0;
+}
+
+/* Cores de Texto */
+.textoBranco{
+    color: white;
+}
+
+.panel-body{
+    transition: all 0.5s ease;
+}
+
+.departamento{
+    color:white;
+    background-color:black;
+}

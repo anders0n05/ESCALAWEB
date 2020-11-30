@@ -1,0 +1,78 @@
+.header-section {
+    background: #2b9bcb;
+    color: #FFFFFF;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.21);
+    -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.21);
+    -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.21);
+    -o-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.21);
+    margin-bottom: 15px;
+}
+
+.sticky-header {
+    top: 0;
+    left: 0px;
+    width: 100%;
+    z-index: 100;
+}
+
+.topBar {
+    padding: 0.7em 0;
+    font-size: 19px;
+    font-weight: normal !important;
+    text-align: left;
+    color: #FFFFFF;
+    white-space: nowrap;
+}
+
+h3 {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.historico .row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.detalhamento {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+}
+
+div.responder {
+    margin-bottom: 20px;
+}
+
+.dropzone {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    margin-bottom: 15px;
+    min-height: 100px !important;
+    padding: 10px 10px !important;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px !important;
+}
+
+.anexos{
+    margin-top: 10px;
+}
+
+.form-control[disabled]{
+    cursor: default !important;
+}

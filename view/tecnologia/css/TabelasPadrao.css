@@ -1,0 +1,28 @@
+@media screen and (max-width: 767px) {
+    .dataTables_length {
+        display: none;
+    }
+
+    #tableAprovacoes_wrapper .col-sm-12 {
+        padding: 0 !important;
+    }
+
+    .nopadding {
+        padding: 0 !important;
+    }
+
+    .container {
+        padding: 0 !important;
+    }
+}
+
+.sorting_asc:after,
+.sorting_desc:after,
+.sorting:after {
+    display: none !important;
+}
+
+/* .dataTables_wrapper {
+    margin-top: -30px;
+    margin-bottom: -15px;
+} */

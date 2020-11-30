@@ -1,0 +1,23 @@
+html,
+body {
+    height: 100%;
+}
+.carousel {
+    height: 100vh;
+    width: 100%;
+    overflow:hidden;
+	display:table;
+	
+}
+.carousel .carousel-inner {
+	width:100%;
+	max-width:100px;
+    height:100%;    
+	display:table-cell; 
+	vertical-align: middle;
+	top: -80px;
+}
+.componente{
+	display:table-cell; 
+	vertical-align: middle;
+}

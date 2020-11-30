@@ -1,0 +1,47 @@
+body {
+    overflow: hidden !important;	
+}
+@media screen and (max-width: 768px) {
+    body{
+        overflow: auto !important;	
+    }
+}
+
+.modal-body {
+    float: left !important;
+    padding-bottom: 0 !important;
+}
+
+.modal-footer {
+    margin: 0 !important;
+}
+
+.ul.dropdown-menu {
+    min-width: 230px !important; 
+}
+
+.list-group .list-group-item {
+    color: #777 !important;
+    padding: 5px !important;
+    border-radius: 0px !important;
+}
+
+.list-group .list-group-item.active {
+    color: #FFF !important;
+    background: #2b9bcb !important;
+}
+
+.list-group .list-group-item .state-icon {
+    margin-left: 10px !important;
+    margin-right: 15px !important;
+}
+
+.list-group-item-button {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    text-align: center !important
+}
+
+.list-group-item-button:hover {
+    background: #FFF !important;
+}
