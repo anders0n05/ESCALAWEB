@@ -122,14 +122,18 @@ else {
 					}
 					?>
 				</div>
+				
 				<!--div class="topBarRight">
 									<button class="botaoTop" onclick="toggleFullScreen()"><i class="fa fa-arrows-alt"></i></button>
 				</div-->
 
+
 			</div>
+
 
 			<div class="clearfix"> </div>	
 		</div>
+		
 
 		<div class="overlay"> &nbsp; </div>
 		<div class="main-page charts-page">
@@ -142,10 +146,10 @@ else {
 	</div>
 
 
-
-	<!--footer-//
+<!--
+	
 	<div class="footer">
-	   <p>&copy; 2016 Escalasoft Tecnologia Todos os direitos reservados| Simples, rápido e completo.</p>
+	   <img src="../tecnologia/img/rodape.jfif" >
 	</div>
 	<!--//footer-->
 </div>
