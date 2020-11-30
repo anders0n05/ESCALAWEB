@@ -454,7 +454,7 @@ button#showLeftPushClose:hover {
 }
 
 .fundoAzul{
-	background-color:#2b9bcb;
+	background-color:  #778899;
 	height:100%;
 }
 /*--push-menu-css--*/
@@ -1652,7 +1652,7 @@ button#showLeftPushVoltarModal {
 @media (max-width:640px){
 
 .logologin{
-max-width:60%;	
+max-width:40%;	
 }
 
 button#showLeftPush {
