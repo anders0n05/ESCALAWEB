@@ -1,3 +1,4 @@
+<!--teste><!-->
 <?php
 include_once('../../controller/tecnologia/Sistema.php');
 		if(!isset($_SESSION['usuario']) and !isset($_SESSION['senha'])){

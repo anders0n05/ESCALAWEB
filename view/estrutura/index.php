@@ -28,6 +28,8 @@ else {
 		<script>
 			new WOW().init();
 		</script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   		<script src="../tecnologia/js/Dashboard.js"></script>
 		<!--//end-animate-->
 		<!-- chart -->
 		<script src="../tecnologia/js/Chart.js"></script>
@@ -130,8 +132,9 @@ else {
 
 			</div>
 
-
+         
 			<div class="clearfix"> </div>	
+
 		</div>
 		
 
@@ -145,7 +148,7 @@ else {
 
 	</div>
 
-
+    <div id="barchart_material" style="width: 400px; height: 300px;"></div>
 <!--
 	
 	<div class="footer">

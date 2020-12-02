@@ -113,6 +113,7 @@ $queryProgramacao = "SELECT HANDLE,
                                               WHERE A.EMPRESA = $empresa
                                                 AND A.TRANSPORTADORA IS NOT NULL
                                                 AND A.STATUS NOT IN (4, 5)
+                                               
                                                 " . $filtroPessoaUsuario . "
                                                 " . Sistema::getFiltroPostEntreDataMinuto('dataInicio', 'dataFinal', 'A.PREVISAOENTREGA') . "
                                                 " . Sistema::getFiltroPostData('dataEmbarque', 'A.CARREGAMENTO') . "
@@ -184,6 +185,7 @@ $queryProgramacao = "SELECT HANDLE,
                                               WHERE A.EMPRESA = $empresa
                                                 AND A.TRANSPORTADORA IS NOT NULL
                                                 AND A.STATUS NOT IN (4, 5)
+
                                                 " . $filtroPessoaUsuario . "
                                                 " . Sistema::getFiltroPostEntreDataMinuto('dataInicio', 'dataFinal', 'A.PREVISAOENTREGA') . "
                                                 " . Sistema::getFiltroPostData('dataEmbarque', 'A.CARREGAMENTO') . "

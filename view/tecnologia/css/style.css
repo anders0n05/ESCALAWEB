@@ -467,7 +467,7 @@ button#showLeftPushClose:hover {
     top: 0;
     z-index: 1000;
     /*background-color:#175d79;*/
-	background-color:#FFFFFF;
+	background-color:#808080;
 	border-right: 1px solid #4c4c4c;
 	/*padding: 2em 10px;*/
 }
@@ -508,7 +508,7 @@ button#showLeftPushClose:hover {
 	 margin-bottom: 1em;
 }
 .sidebar ul li a {
-    color: #1D1D1D;
+    color: white;
     font-size: 1em;
 }
 
