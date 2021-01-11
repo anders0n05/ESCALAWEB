@@ -3,6 +3,7 @@
 include_once('../tecnologia/Sistema.php');
 
 $webservice = 'armazem';
+
 include_once('../tecnologia/WebService.php');
 
 $connect = Sistema::getConexao();
@@ -139,21 +140,21 @@ switch ($metodo) {
                                              A.DOCUMENTO MOTORISTADOCUMENTO,
        
                                              (SELECT COUNT(X.HANDLE)
-                                                FROM AM_CARREGAMENTOOCORRENCIA X (NOLOCK)
+                                                FROM AM_CARREGAMENTOOCORRENCIA X 
                                                WHERE X.CARREGAMENTO = A.HANDLE
                                                  AND X.STATUS <> 10
                                                  AND X.ACAO IN (2, 5)) QUANTIDADEOCORRENCIA
 
-                                        FROM AM_CARREGAMENTO A (NOLOCK)
-                                        LEFT JOIN AM_TIPOCARREGAMENTOOCORRENCIA B (NOLOCK) ON B.HANDLE = A.TIPO
-                                        LEFT JOIN AM_PROGRAMACAODOCA C (NOLOCK) ON C.HANDLE = A.PROGRAMACAODOCA
-                                        LEFT JOIN AM_DOCA D (NOLOCK) ON D.HANDLE = C.DOCA
-                                        LEFT JOIN MF_TIPOVEICULO E (NOLOCK) ON E.HANDLE = A.TIPOVEICULO
-                                        LEFT JOIN MS_ESTADO F (NOLOCK) ON F.HANDLE = A.UFPLACA
-                                        LEFT JOIN MF_PROPRIEDADEVEICULO G (NOLOCK) ON G.HANDLE = A.PROPRIEDADEVEICULO
-                                        LEFT JOIN PA_CONTEINER H (NOLOCK) ON H.HANDLE = A.CONTEINER
+                                        FROM AM_CARREGAMENTO A 
+                                        LEFT JOIN AM_TIPOCARREGAMENTOOCORRENCIA B  ON B.HANDLE = A.TIPO
+                                        LEFT JOIN AM_PROGRAMACAODOCA C  ON C.HANDLE = A.PROGRAMACAODOCA
+                                        LEFT JOIN AM_DOCA D  ON D.HANDLE = C.DOCA
+                                        LEFT JOIN MF_TIPOVEICULO E  ON E.HANDLE = A.TIPOVEICULO
+                                        LEFT JOIN MS_ESTADO F  ON F.HANDLE = A.UFPLACA
+                                        LEFT JOIN MF_PROPRIEDADEVEICULO G  ON G.HANDLE = A.PROPRIEDADEVEICULO
+                                        LEFT JOIN PA_CONTEINER H  ON H.HANDLE = A.CONTEINER
                                        WHERE A.HANDLE = $carregamento";
-
+									   
                 $queryCarregamentoPrepare = $connect->prepare($queryCarregamento);
                 $queryCarregamentoPrepare->execute();
 
@@ -194,20 +195,20 @@ switch ($metodo) {
                                                        A.MOTORISTADOCUMENTO,
                                                        A.OBSERVACAO
 
-                                                  FROM AM_CARREGAMENTOOCORRENCIA A (NOLOCK)
-                                                  LEFT JOIN AM_TIPOCARREGAMENTOOCORRENCIA B (NOLOCK) ON B.HANDLE = A.TIPO
-                                                  LEFT JOIN AM_PROGRAMACAODOCA C (NOLOCK) ON C.HANDLE = A.PROGRAMACAODOCA
-                                                  LEFT JOIN AM_DOCA D (NOLOCK) ON D.HANDLE = C.DOCA
-                                                  LEFT JOIN MF_TIPOVEICULO E (NOLOCK) ON E.HANDLE = A.TIPOVEICULO
-                                                  LEFT JOIN MS_ESTADO F (NOLOCK) ON F.HANDLE = A.VEICULOUF
-                                                  LEFT JOIN MF_PROPRIEDADEVEICULO G (NOLOCK) ON G.HANDLE = A.PROPRIEDADEVEICULO
-                                                  LEFT JOIN PA_CONTEINER H (NOLOCK) ON H.HANDLE = A.CONTEINER
+                                                  FROM AM_CARREGAMENTOOCORRENCIA A 
+                                                  LEFT JOIN AM_TIPOCARREGAMENTOOCORRENCIA B  ON B.HANDLE = A.TIPO
+                                                  LEFT JOIN AM_PROGRAMACAODOCA C  ON C.HANDLE = A.PROGRAMACAODOCA
+                                                  LEFT JOIN AM_DOCA D  ON D.HANDLE = C.DOCA
+                                                  LEFT JOIN MF_TIPOVEICULO E  ON E.HANDLE = A.TIPOVEICULO
+                                                  LEFT JOIN MS_ESTADO F  ON F.HANDLE = A.VEICULOUF
+                                                  LEFT JOIN MF_PROPRIEDADEVEICULO G  ON G.HANDLE = A.PROPRIEDADEVEICULO
+                                                  LEFT JOIN PA_CONTEINER H  ON H.HANDLE = A.CONTEINER
                                                   
                                                  WHERE A.CARREGAMENTO = $carregamento
                                                    AND A.STATUS NOT IN (3, 9, 10)
                                                    
                                                    AND NOT EXISTS(SELECT X.HANDLE
-                                                                    FROM AM_CARREGAMENTOOCORRENCIA X (NOLOCK)
+                                                                    FROM AM_CARREGAMENTOOCORRENCIA X 
                                                                    WHERE A.CARREGAMENTO = A.CARREGAMENTO
                                                                      AND X.STATUS NOT IN (3, 9, 10)
                                                                      AND X.DATA > A.DATA)";

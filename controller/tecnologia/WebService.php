@@ -1,8 +1,8 @@
 <?php
 
 #Alterar Host e porta para conexão ao WebService
-$host = "APL01.OLLOGISTICA.COM.BR";
-$porta = 8080;
+$host = "escalaweb.ollogistica.com.br";
+$porta = 8088;
 #######
 
 if (isset($_GET['getWS'])) {

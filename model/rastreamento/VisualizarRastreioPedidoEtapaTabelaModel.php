@@ -38,7 +38,8 @@ while ($rowEtapa = $queryEtapa->fetch(PDO::FETCH_ASSOC)) {
 									  LEFT JOIN RA_TIPOEVENTO D ON A.TIPO = D.HANDLE
 									  LEFT JOIN MS_STATUS E ON E.HANDLE = A.STATUS
 									  LEFT JOIN MD_IMAGEM F ON F.HANDLE = E.IMAGEM
-									 WHERE B.HANDLE = '" . $EtapaHandle . "'  
+									 WHERE B.HANDLE = '" . $EtapaHandle . "'  AND 1=0  
+
 									ORDER BY A.SEQUENCIAL ASC
 									");
         $querySubEtapaEvento->execute();
