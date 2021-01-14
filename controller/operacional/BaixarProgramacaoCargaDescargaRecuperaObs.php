@@ -5,7 +5,7 @@ include_once('../tecnologia/Sistema.php');
 $connect = Sistema::getConexao();
 $handleCarga = Sistema::getPost('handle');
 
-$dados = $connect->prepare("SELECT OBSERVACAO FROM AM_CARREGAMENTO WHERE HANDLE = $handleCarga");
+$dados = $connect->prepare("SELECT OBSERVACAO FROM AM_CARREGAMENTO WHERE HANDLE = '" . $handleCarga . "'");
 
 try {
     $dados->execute();

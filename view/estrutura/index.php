@@ -140,15 +140,18 @@ else {
 
 		<div class="overlay"> &nbsp; </div>
 		<div class="main-page charts-page">
-			<h3 class="title1"></h3>
-			<div class="charts">
+			
+			</h3>
+			
 				<?php //include('../../model/dashboard/painelModel.php') ?>
 			</div>
 		</div>
 
 	</div>
 
-    <div id="barchart_material" style="width: 400px; height: 300px;"></div>
+    <div id="barchart_material"  " >
+     
+    </div>
 <!--
 	
 	<div class="footer">

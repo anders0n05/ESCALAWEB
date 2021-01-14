@@ -4,7 +4,7 @@ include_once('../tecnologia/Sistema.php');
 
 $webservice = 'armazem';
 
-include_once('../tecnologia/WebService.php');
+/*include_once('../tecnologia/WebService.php');*/
 
 $connect = Sistema::getConexao();
 $metodo = Sistema::getPost('metodo');

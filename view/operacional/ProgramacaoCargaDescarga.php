@@ -129,14 +129,21 @@ else {
                         <tr class="Noactivetr">
                             <th width="0%" hidden='true'>&nbsp;</th>
                             <th width="1%">&nbsp;</th>
+
                             <th class="text-center">Número</th>
                             <th class="text-center">Pedido</th>
+                           
+                          <th class="text-center" " id = "teste" > Situacao</th>
+                          <th class="text-center" " id = "teste" > Ocorr. Aprov</th>
+
                             <th>Transportadora</th>
+                            <th>Doca</th>
                             <th class="text-center">Coleta</th>
                             <th class="text-center">Entrega</th>
                             <th class="text-center">Prog entrega</th>
                             <th>Tipo</th>
                             <th>Filial</th>
+
                             <th>Cliente Final</th>
                             <th>Local de entrega</th>
                             <th>Municipio/UF Entrega</th>

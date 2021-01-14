@@ -196,6 +196,7 @@ function OcorrenciaProgramacaoCargaDescargaFun() {
         data: {
             metodo: 'CarregarOcorrencia',
             handleCarregamento: carregamento
+
         },
         success: function (data) {
             fecharCarregando();
@@ -206,7 +207,7 @@ function OcorrenciaProgramacaoCargaDescargaFun() {
                 $('#previsao').val(data.PREVISAOENTREGA);
                 $('#numero').val(data.NUMERO);
 
-                handleOcorrencia = parseInt(data.HANDLE);
+                handle = parseInt(data.HANDLE);
 
                 $('#tipoOcorrencia').val(data.TIPO);
                 $('#tipoOcorrenciaHandle').val(data.TIPOHANDLE);

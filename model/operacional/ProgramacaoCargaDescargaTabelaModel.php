@@ -20,6 +20,8 @@ if (!empty($pessoaUsuarioFiltro)) {
 
 $queryProgramacao = "SELECT HANDLE,  
                             STATUS, 
+                            STATUSINTERNO,
+                            APROV,
                             NUMERO,
                             TIPOPROCESSO,
                             TRANSPORTADORA,
@@ -51,6 +53,43 @@ $queryProgramacao = "SELECT HANDLE,
                             SUM(PESOBRUTO) PESOBRUTO
                       FROM ( SELECT DISTINCT TOP 100 A.HANDLE HANDLE,  
                                                A.STATUS STATUS, 
+                                               CASE   WHEN (SELECT TOP 1 XB.HANDLE FROM   AM_CARREGAMENTOOCORRENCIA XA
+                                                         INNER JOIN AM_TIPOCARREGAMENTOOCORRENCIA XB ON XB.HANDLE = XA.TIPO
+                                                          WHERE XA.STATUS = 9 AND XB.HANDLE IN (1,15,16) AND XA.CARREGAMENTO =A.HANDLE
+                                                            ORDER BY XA.DATA DESC ) = 1 THEN 'Transp Definido'
+                             
+                                                      WHEN (SELECT TOP 1 XB.HANDLE FROM AM_CARREGAMENTOOCORRENCIA XA
+                                                          INNER JOIN AM_TIPOCARREGAMENTOOCORRENCIA XB ON XB.HANDLE = XA.TIPO
+                                                           WHERE XA.STATUS = 9 AND XB.HANDLE IN (1,15,16) AND XA.CARREGAMENTO =A.HANDLE
+                                                           ORDER BY XA.DATA DESC ) = 15 THEN 'Ag. Definir Transporte'
+                                                      WHEN (SELECT TOP 1 XB.HANDLE FROM AM_CARREGAMENTOOCORRENCIA XA
+                                                            INNER JOIN AM_TIPOCARREGAMENTOOCORRENCIA XB ON XB.HANDLE = XA.TIPO
+                                                            WHERE XA.STATUS = 9 AND XB.HANDLE IN (1,15,16) AND XA.CARREGAMENTO =A.HANDLE
+                                                              ORDER BY XA.DATA DESC ) = 16 THEN 'Carga Recusada'
+
+                                                 ELSE 'Ag.Aceite' END  
+                                               STATUSINTERNO,
+                                               CASE WHEN EXISTS(SELECT XA.HANDLE FROM AM_CARREGAMENTOOCORRENCIA XA
+                                   INNER JOIN AM_TIPOCARREGAMENTOOCORRENCIA XB ON XB.HANDLE = XA.TIPO
+                             WHERE XA.STATUS = 3  AND XA.CARREGAMENTO =A.HANDLE) THEN 'Em Analise'
+                             
+                             WHEN EXISTS(SELECT XA.HANDLE FROM AM_CARREGAMENTOOCORRENCIA XA
+                                   INNER JOIN AM_TIPOCARREGAMENTOOCORRENCIA XB ON XB.HANDLE = XA.TIPO
+                             WHERE XA.STATUS = 9  AND XA.CARREGAMENTO =A.HANDLE
+                             AND EXISTS (SELECT L.HANDLE FROM MS_LOG L
+                                         WHERE L.HANDLEORIGEM = XA.HANDLE AND L.COMPLEMENTO = 'Ag aprovação'
+                                                            )
+                             
+                             ) THEN 'Ok'
+                              WHEN EXISTS(SELECT XA.HANDLE FROM AM_CARREGAMENTOOCORRENCIA XA
+                                   INNER JOIN AM_TIPOCARREGAMENTOOCORRENCIA XB ON XB.HANDLE = XA.TIPO
+                             WHERE XA.STATUS = 2  AND XA.CARREGAMENTO =A.HANDLE
+                             AND EXISTS (SELECT L.HANDLE FROM MS_LOG L
+                                         WHERE L.HANDLEORIGEM = XA.HANDLE AND L.COMPLEMENTO = 'Ag aprovação'
+                                                            )
+                             
+                             ) THEN 'Recusado'
+                              END APROV,
                                                A.NUMERO NUMERO,
                                                A.TIPOPROCESSO TIPOPROCESSO,
                                                B9.APELIDO TRANSPORTADORA,
@@ -123,7 +162,9 @@ $queryProgramacao = "SELECT HANDLE,
 
                                                
                                   ) TABELA  GROUP BY HANDLE,  
-                                                 STATUS, 
+                                                 STATUS,
+                                                 STATUSINTERNO, 
+                                                 APROV,
                                                  NUMERO,
                                                  TIPOPROCESSO,
                                                  TRANSPORTADORA,
@@ -164,7 +205,21 @@ try {
         do {
             $programacaoHandle = $rowProgramacao['HANDLE'];
             $programacaoStatus = $rowProgramacao['STATUS'];
+             $aprovacaointerna = $rowProgramacao['APROV'];
+             $programacaoStatusInterno = $rowProgramacao['STATUSINTERNO'];
             
+             if ($aprovacaointerna == 'Em Analise') {
+               $color = '#E9967A';
+               # code...
+             }
+             else if ($aprovacaointerna== 'Ag Aprovacão') {
+               $color = '#EEDD82';
+               # code...
+             } else if ($aprovacaointerna == 'Ok') {
+               $color = '#90EE90';
+             } else {
+              $color = null;
+             }
             $programacaoStatusIcone = Sistema::getImagem($rowProgramacao['RESOURCENAME'], $rowProgramacao['STATUSNOME']);
             $programacaoNumero = $rowProgramacao['NUMERO'];
             $programacaoNumeroPedido = $rowProgramacao['NUMEROPEDIDO'];
@@ -172,6 +227,7 @@ try {
             $programacaoColeta = Sistema::formataDataHora($rowProgramacao['DATA']);
             $programacaoEntrega = Sistema::formataDataHora($rowProgramacao['PREVISAOENTREGA']);
             $programacaoProgramacaoEntrega = Sistema::formataDataHora($rowProgramacao['COLETAPROGRAMADO']);
+             $programacaoDoca = $rowProgramacao['DOCA'];
             $programacaoTipo = $rowProgramacao['TIPO'];
             $programacaoFilial = $rowProgramacao['FILIAL'];
             $programacaoClienteFinal = $rowProgramacao['CLIENTEFINAL'];
@@ -194,14 +250,23 @@ try {
             echo "  <tr>
                         <td class='handle' hidden='true'>$programacaoHandle</td>
                         <td>$programacaoStatusIcone</td>
-                        <td class=\"text-right\">$programacaoNumero</td>
+                           <td class=\"text-right\">$programacaoNumero</td>
                         <td class=\"text-right\">$programacaoNumeroPedido</td>
+                     
+                         <td  >".$programacaoStatusInterno."</td>
+                            <td style='background: {$color}; color: black; border-color:white 1px' >".$aprovacaointerna."</td>
+                         
+
+                         
+                     
                         <td>$programacaoTransportadora</td>
+                        <td>$programacaoDoca</td>
                         <td class=\"text-center\"><span style=\"display:none\">$programacaoColetaOrdenacao</span>$programacaoColeta</td>
                         <td class=\"text-center\"><span style=\"display:none\">$programacaoEntregaOrdenacao</span>$programacaoEntrega</td>
                         <td class=\"text-center\"><span style=\"display:none\">$programacaoProgramacaoEntregaOrdenacao</span>$programacaoProgramacaoEntrega</td>
                         <td>$programacaoTipo</td>
                         <td>$programacaoFilial</td>
+
                         <td>$programacaoClienteFinal</td>
                         <td>$programacaoLocalEntrega</td>
                         <td>$programacaoMunicipioLocalEntrega - $programacaoEstadoLocalEntrega</td>
